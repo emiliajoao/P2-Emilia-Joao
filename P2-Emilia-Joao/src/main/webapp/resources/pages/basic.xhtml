@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html >
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+
+	<title>Calculadora Basica</title>
+	<link rel="stylesheet" type="text/css"
+		href="resources/css/calculator.css" />
+	<script src="resources/js/basic.js" />
+	<title>Calculadora</title>
+
+</h:head>
+<h:body>
+	<div id="container" class="ui-grid ui-grid-responsive">
+		<div class="ui-grid-row ">
+			<div class="ui-grid-col-4"></div>
+			<div class="ui-grid-col-4">
+				<p:panelGrid columns="1">
+					<f:facet name="header"> Calculadora Normal </f:facet>
+					<h:form  id="basicform">
+						<h:panelGrid styleClass="radiobuttons" columns="2" cellpadding="0"
+							cellspacing="2">
+							<em> <a href="/resources/pages/scientific.xhtml">Scientifica</a>
+							</em>
+						</h:panelGrid>
+						<h:panelGroup style="display:block; text-align:centre">
+							<h:inputTextarea id="basicdisplay"
+								styleClass="txtareabasicdisplay" title="Preencha aqui a sua expressao matemática" 
+								value="#{basica.display}" rows="2" cols="49" />
+						</h:panelGroup>
+						
+						
+						<h:panelGrid columns="5" cellpadding="5">
+							<p:commandButton id="btn1" class="btn-numeric" type="button"
+								value="1" onclick="btnnumeric('1');" />
+							<p:commandButton id="btn2" class="btn-numeric" type="button"
+								value="2" onclick="btnnumeric('2');" />
+							<p:commandButton id="btn3" class="btn-numeric" type="button"
+								value="3" onclick="btnnumeric('3');" />
+							<p:commandButton id="btnplus" class="btn-numeric" type="button"
+								value="+" onclick="btnoperator('+');" />
+							<h:commandButton id="btnclear" class="button" type="button"
+								value="C" onclick="btnclear();" />
+							<p:commandButton id="btn4" class="btn-numeric" type="button"
+								value="4" onclick="btnnumeric('4');" />
+							<p:commandButton id="btn5" class="btn-numeric" type="button"
+								value="5" onclick="btnnumeric('5');" />
+							<p:commandButton id="btn6" class="btn-numeric" type="button"
+								value="6" onclick="btnnumeric('6');" />
+							<p:commandButton id="btnminus" class="btn-numeric" type="button"
+								value="-" onclick="btnoperator('-');" />
+							<h:commandButton id="btnce" class="button" type="reset"
+								value="CE" />
+
+							<p:commandButton id="btn7" class="btn-numeric" type="button"
+								value="7" onclick="btnnumeric('7');" />
+							<p:commandButton id="btn8" class="btn-numeric" type="button"
+								value="8" onclick="btnnumeric('8');" />
+							<p:commandButton id="btn9" class="btn-numeric" type="button"
+								value="9" onclick="btnnumeric('9');" />
+							<p:commandButton id="btntimes" class="btn-numeric" type="button"
+								value="&#215;" onclick="btnoperator('*');" />
+							<p></p>
+							<p:commandButton id="btn0" class="btn-numeric" type="button"
+								value="0" onclick="btnnumeric('0');" />
+							<p:commandButton id="btncoma" class="btn-numeric" type="button"
+								value="." onclick="btnoperator('.');" />
+							<h:commandButton id="btnequal" styleClass="btn-equal"
+								type="submit" actionListener="#{basica.btnequal()}" value="=" action="index.xhtml"  />
+							<p:commandButton id="btndivby" class="btn-numeric" type="button"
+								value="&#247;" onclick="btnoperator('/');" />
+						</h:panelGrid>
+						<f:facet name="footer"> Projecto2 PAJ </f:facet>
+					</h:form>
+				</p:panelGrid>
+				<div class="ui-grid-col-4"></div>
+			</div>
+		</div>
+	</div>
+
+
+</h:body>
+</html>

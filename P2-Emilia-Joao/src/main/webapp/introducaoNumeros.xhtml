@@ -1,0 +1,32 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+<h:head>
+	<title>Calculadora</title>
+</h:head>
+<h:body>
+	<h:form>
+
+		<h:panelGrid columns="2">
+			<h:outputLabel value="Operador 1:" for="op1" />
+			<h:inputText id="op1" value="#{basica.display}" label="Operador 1"
+				required="true">
+
+			</h:inputText>
+			<h:outputLabel value="res:" for="res" />
+			<h:inputText id="res" value="#{basica.display}" label="resultado"
+				readonly="true">
+			</h:inputText>
+
+			<h:commandButton value="somar" actionListener="#{basica.btnequal()}"
+				action="introducaoNumeros.xhtml" />
+		</h:panelGrid>
+
+
+	</h:form>
+
+</h:body>
+</html>

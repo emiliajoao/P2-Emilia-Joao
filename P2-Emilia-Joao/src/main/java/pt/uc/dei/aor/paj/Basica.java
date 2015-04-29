@@ -3,7 +3,7 @@ package pt.uc.dei.aor.paj;
 import java.io.Serializable;
 
 import javax.enterprise.context.RequestScoped;
-import javax.enterprise.context.SessionScoped;
+//import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -12,7 +12,8 @@ import javax.inject.Named;
 public class Basica implements Serializable {
 	@Inject Calculadora calc ;
 	private static final long serialVersionUID = 1L;
-	private String display;
+	private String display="0.0";
+	private String firstdigit="true";
 	private String resultado;
 
 	
@@ -24,6 +25,14 @@ public class Basica implements Serializable {
 		this.display = display;
 		
 	}
+	public String getFirstdigit() {
+		return firstdigit;
+	}
+
+	public void setFirstdigit(String firstdigit) {
+		this.firstdigit = firstdigit;
+	}
+
 	public void btnequal() {
 	
 	    //request.setCalc(display);
@@ -31,5 +40,6 @@ public class Basica implements Serializable {
 			//this.resultado="34";
 		calc.setExp(this.display);
 		this.resultado=calc.getExp();
+		this.setFirstdigit("true");
 	}
 }

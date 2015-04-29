@@ -14,17 +14,18 @@
 <h:body>
 	<div id="container" class="ui-grid ui-grid-responsive">
 		<div class="ui-grid-row ">
-<!-- 			<div class="ui-grid-col-4"></div> -->
+			<div class="ui-grid-col-4"></div>
 			<div class="ui-grid-col-4">
 				<p:panelGrid columns="1">
 					<f:facet name="header"> Calculadora Normal </f:facet>
 					<h:form  id="basicform">
 						<h:panelGrid styleClass="radiobuttons" columns="2" cellpadding="0"
 							cellspacing="2">
-							<em> <a href="/resources/pages/scientific.xhtml">Scientifica</a>
+							<em> <a href="./scientific.xhtml">Scientifica</a>
 							</em>
 						</h:panelGrid>
 						<h:panelGroup style="display:block; text-align:centre">
+							<h:inputHidden id="firstdigit" value="#{basica.firstdigit}" />
 							<h:inputTextarea id="basicdisplay"
 								styleClass="txtareabasicdisplay" title="Preencha aqui a sua expressao matemática" 
 								value="#{basica.display}" rows="2" cols="49" />
@@ -50,8 +51,8 @@
 								value="6" onclick="btnnumeric('6');" />
 							<p:commandButton id="btnminus" class="btn-numeric" type="button"
 								value="-" onclick="btnoperator('-');" />
-							<h:commandButton id="btnce" class="button" type="reset"
-								value="CE" />
+							<h:commandButton id="btnce" class="button" type="button"
+								value="CE" onclick="btnclearexpression();" />
 
 							<p:commandButton id="btn7" class="btn-numeric" type="button"
 								value="7" onclick="btnnumeric('7');" />
@@ -67,7 +68,7 @@
 							<p:commandButton id="btncoma" class="btn-numeric" type="button"
 								value="." onclick="btnoperator('.');" />
 							<h:commandButton id="btnequal" styleClass="btn-equal"
-								type="submit" actionListener="#{basica.btnequal()}" value="=" action="index.xhtml"  />
+								type="submit" actionListener="#{basica.btnequal()}" value="=" action="basic.xhtml"  />
 							<p:commandButton id="btndivby" class="btn-numeric" type="button"
 								value="&#247;" onclick="btnoperator('/');" />
 						</h:panelGrid>

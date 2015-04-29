@@ -4,8 +4,15 @@
  */
 function btnnumeric(digito){
 	var displaytxt = document.getElementById("basicform:basicdisplay").value;
-
-	if ( displaytxt.length < 1){
+	var firstdigit = document.getElementById("basicform:firstdigit").value;
+	
+	if ( firstdigit == "true" ){
+		//alert ('tecla '+digito+' - 0.0 Primeiro caracter!');
+		displaytxt=""+digito;
+		firstdigit = "false";
+		document.getElementById("basicform:firstdigit").value=firstdigit;
+	}
+	else if ( displaytxt.length < 1){
 		//alert ('tecla '+digito+' - Primeiro caracter!');
 		displaytxt=""+digito;
 	}
@@ -22,9 +29,19 @@ function btnnumeric(digito){
  */
 function btnoperator(simbol){
 	var displaytxt = document.getElementById("basicform:basicdisplay").value;
+	var firstdigit = document.getElementById("basicform:firstdigit").value;
 	//alert ('TEST: tecla: '+simbol);
+	//Se for primeiro digito, continua a expressao como ja tendo digitos
+	if ( firstdigit == "true" ){
+		firstdigit = "false";
+		document.getElementById("basicform:firstdigit").value=firstdigit;
+		//Se for 0.0 apaga texto do ecra. qq outro valor mantem e segue construcao da expressao
+		if (displaytxt=="0.0") {
+			displaytxt="";
+		}
+	}
 	//Se o display estiver vazio
-	if ( displaytxt.length < 1) {
+	if ( displaytxt.length < 1 ) {
 		//se for o sinal "-" inicia a string
 		//alert ('TEST: tecla: '+simbol);
 		if (simbol=="-") {
@@ -126,7 +143,9 @@ function isdigit(char){
 	}
 }
 
-
+/**
+ * Button clear: clear last operator or number
+ */
 function btnclear() {
 	var displaytxt = document.getElementById("basicform:basicdisplay").value;
 	//Se display tem 0 ou 1 caracter
@@ -159,5 +178,15 @@ function btnclear() {
 		}
 	}
 	
+	document.getElementById("basicform:basicdisplay").value=displaytxt;
+}
+
+/**
+ * Button clear expression: inicializa display with 0.0
+ */
+function btnclearexpression() {
+	var displaytxt = "0.0";
+	var firstdigit = "true";
+	document.getElementById("basicform:firstdigit").value=firstdigit;
 	document.getElementById("basicform:basicdisplay").value=displaytxt;
 }

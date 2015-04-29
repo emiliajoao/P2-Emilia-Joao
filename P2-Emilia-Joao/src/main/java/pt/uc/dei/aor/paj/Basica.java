@@ -11,7 +11,6 @@ import javax.inject.Named;
 @RequestScoped
 public class Basica implements Serializable {
 	@Inject Calculadora calc ;
-	private static final long serialVersionUID = 1L;
 	private String display="0.0";
 	private String firstdigit="true";
 	private String resultado;

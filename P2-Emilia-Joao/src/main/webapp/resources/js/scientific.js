@@ -1,8 +1,16 @@
 function btnfunction(fname){
-	var displaytxt = document.getElementById("basicform:basicdisplay").value;
 
-	if ( displaytxt.length < 1){
-		//alert ('tecla '+digito+' - Primeiro caracter!');
+	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
+	var firstdigit = document.getElementById("scientificform:firstdigit").value;
+	
+	if ( firstdigit == "true" ){
+		alert ('tecla '+digito+' - 0.0 Primeiro caracter!');
+		displaytxt=""+digito;
+		firstdigit = "false";
+		document.getElementById("scientificform:firstdigit").value=firstdigit;
+	}
+	else if ( displaytxt.length < 1){
+		alert ('tecla '+digito+' - Primeiro caracter!');
 		displaytxt=""+fname;
 	}
 	else {
@@ -14,7 +22,7 @@ function btnfunction(fname){
 			alert ('Erro: Tem que utilizar um operador antes da funcao '+fname+'!');
 		}
 	}
-	document.getElementById("basicform:basicdisplay").value=displaytxt;
+	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 
 /**
@@ -22,9 +30,16 @@ function btnfunction(fname){
  * @param digito: digito numerico a acrescentar [0-9]
  */
 function btnnumeric(digito){
-	var displaytxt = document.getElementById("basicform:basicdisplay").value;
-
-	if ( displaytxt.length < 1){
+	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
+	var firstdigit = document.getElementById("scientificform:firstdigit").value;
+	
+	if ( firstdigit == "true" ){
+		//alert ('tecla '+digito+' - 0.0 Primeiro caracter!');
+		displaytxt=""+digito;
+		firstdigit = "false";
+		document.getElementById("scientificform:firstdigit").value=firstdigit;
+	}
+	else if ( displaytxt.length < 1){
 		//alert ('tecla '+digito+' - Primeiro caracter!');
 		displaytxt=""+digito;
 	}
@@ -32,7 +47,7 @@ function btnnumeric(digito){
 		//alert ('tecla '+digito+'!');
 		displaytxt=""+displaytxt+digito;
 	}
-	document.getElementById("basicform:basicdisplay").value=displaytxt;
+	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 
 /**
@@ -40,10 +55,20 @@ function btnnumeric(digito){
  * @param simbol: ponto ou operador a acrescentar [.+-/*]
  */
 function btnoperator(simbol){
-	var displaytxt = document.getElementById("basicform:basicdisplay").value;
+	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
+	var firstdigit = document.getElementById("scientificform:firstdigit").value;
 	//alert ('TEST: tecla: '+simbol);
+	//Se for primeiro digito, continua a expressao como ja tendo digitos
+	if ( firstdigit == "true" ){
+		firstdigit = "false";
+		document.getElementById("scientificform:firstdigit").value=firstdigit;
+		//Se for 0.0 apaga texto do ecra. qq outro valor mantem e segue construcao da expressao
+		if (displaytxt=="0.0") {
+			displaytxt="";
+		}
+	}
 	//Se o display estiver vazio
-	if ( displaytxt.length < 1) {
+	if ( displaytxt.length < 1 ) {
 		//se for o sinal "-" inicia a string
 		//alert ('TEST: tecla: '+simbol);
 		if (simbol=="-") {
@@ -122,7 +147,7 @@ function btnoperator(simbol){
 			alert ('não pode escrever dois operadores consecutivos: '+lastChar+simbol);
 		}
 	}
-	document.getElementById("basicform:basicdisplay").value=displaytxt;
+	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 
 
@@ -145,25 +170,11 @@ function isdigit(char){
 	}
 }
 
-
-function isoperator(char){
-	//alert("TEST: Char lenght: " + char.length);
-	if (char.length!=1) {
-		//alert("TEST: Char lenght != 1 ");
-		return false;
-	}
-	else if (char=="-" || char=="+" || char=="*" || char=="/") {
-		//alert("TEST: Char is numeric and i will return true !");
-		return true;
-	} 
-	else {
-		return false;
-	}
-}
-
-
+/**
+ * Button clear: clear last operator or number
+ */
 function btnclear() {
-	var displaytxt = document.getElementById("basicform:basicdisplay").value;
+	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
 	//Se display tem 0 ou 1 caracter
 	if ( displaytxt.length < 2) {
 		displaytxt="";
@@ -194,23 +205,33 @@ function btnclear() {
 		}
 	}
 	
-	document.getElementById("basicform:basicdisplay").value=displaytxt;
+	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
+}
+
+/**
+ * Button clear expression: inicializa display with 0.0
+ */
+function btnclearexpression() {
+	var displaytxt = "0.0";
+	var firstdigit = "true";
+	document.getElementById("scientificform:firstdigit").value=firstdigit;
+	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 
 function btnfactorial() {
-	var displaytxt = document.getElementById("basicform:basicdisplay").value;
+	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
 	displaytxt=displaytxt+"! <falta implementar em js>"
-	document.getElementById("basicform:basicdisplay").value=displaytxt;
+	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 
 function btnyrootx() {
-	var displaytxt = document.getElementById("basicform:basicdisplay").value;
+	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
 	displaytxt=displaytxt+"x root y <falta implementar em js>"
-	document.getElementById("basicform:basicdisplay").value=displaytxt;
+	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 
 function btnxlogy() {
-	var displaytxt = document.getElementById("basicform:basicdisplay").value;
+	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
 	displaytxt=displaytxt+"x root y <falta implementar em js>"
-	document.getElementById("basicform:basicdisplay").value=displaytxt;
+	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }

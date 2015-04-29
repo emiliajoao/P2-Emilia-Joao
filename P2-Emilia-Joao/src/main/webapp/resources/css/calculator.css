@@ -38,12 +38,12 @@ background-image: url("../images/fundo2.jpg");
    border-top-color: #e63737;
    background: #e63737;
    }
-  .ui-widget-content{
+.ui-widget-content{
   background-image: url("../images/fundo1.jpg")
   }
 .button {
     
-    min-width:50px;
+    min-width:60px;
     height:40px;
   	border:none;
   	border-radius:3px;
@@ -115,12 +115,6 @@ background-image: url("../images/fundo2.jpg");
    background: #37b2e6;
    }
 
-.btn-execute {
-    background-color:#0000ff;
-    color:#ffffff;
-    width:72px;
-   
-}
 
 .btn-operation {
     background-color:#808080;

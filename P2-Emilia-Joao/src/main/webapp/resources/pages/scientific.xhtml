@@ -2,146 +2,139 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:h="http://java.sun.com/jsf/html"> 
+      xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:p="http://primefaces.org/ui">
 
 <h:head>
 	<title>Calculadora Cientifica</title>
-	<link rel="stylesheet" type="text/css" href="../resources/css/calculator.css" />
-	<script src="../resources/js/scientific.js" />
+	<link rel="stylesheet" type="text/css" href="../css/calculator.css" />
+	<script src="../js/scientific.js" />
 </h:head> 
 
-<body>
-	<h:panelGrid columns="1" cellpadding="0" cellspacing="1">
-		<h:panelGroup style="display:block; text-align:center">
-			<h:outputText styleClass="titulo1" value="Calculadora cientifica" />
-		</h:panelGroup>
-	</h:panelGrid>
- 
- 	<h:form method="get" id="basicform" enctype="text/plain">
-		<h:panelGrid id="panel1" columns="2" style="align: centre">
-			<!-- HEADER -->
-			<f:facet name="header">
-				<h:panelGroup style="display:block; text-align:centre">
-					<h:inputTextarea id="scientificdisplay" styleClass="txtareascientificdisplay"
-						title="Preencha aqui a sua expressao matemática"
-						value="#{basica.display}" minlength="1" maxlength="256"
-						rows="5" cols="102" />
-					<!-- readonly="true"-->
-				</h:panelGroup>
-			</f:facet>
-			<!-- BODY -->
-			<p><em> 
-				<a href="../pages/basic.xhtml">Basica</a> 
-			</em></p>	
-			<h:selectOneRadio value="#{cientifica.radgraus}"/> 
-				<f:selectItem itemValue="radianos" itemLabel="Radianos" />
-				<f:selectItem itemValue="graus" itemLabel="Graus" />
-		</h:panelGrid>	
-		
-		<h:panelGrid id="panel2" columns="3" style="align: centre">	
-		
-			<h:panelGrid id="panel3" columns="4" style="align: centre">	
-				<h:commandButton id="btnopen" styleClass="btn-fn" type="button"
-					 value="(" onclick="btnfunction('(');" />
-				<h:commandButton id="btnclose" styleClass="btn-fn" type="button"
-					 value=")" onclick="btnfunction(')');" />
-				<h:commandButton id="btnabs" styleClass="btn-fn" type="button"
-					 value="abs" onclick="btnfunction('abs ');" />
-				<h:commandButton id="btnacos" styleClass="btn-fn" type="button"
-					 value="acos" onclick="btnfunction('acos ');" />
-				<h:commandButton id="btnasin" styleClass="btn-fn" type="button"
-					 value="asin" onclick="btnfunction('asin ');" />
-				<h:commandButton id="btnatan" styleClass="btn-fn" type="button"
-					 value="atan" onclick="btnfunction('atan ');" />
-				<h:commandButton id="btncbrt" styleClass="btn-fn" type="button"
-					 value="cbrt" onclick="btnfunction('cbrt ');" />
-				<h:commandButton id="btnceil" styleClass="btn-fn" type="button"
-					 value="ceil" onclick="btnfunction('ceil ');" />
-				<h:commandButton id="btncos" styleClass="btn-fn" type="button"
-					 value="cos" onclick="btnfunction('cos ');" />
-				<h:commandButton id="btncosh" styleClass="btn-fn" type="button"
-					 value="cosh" onclick="btnfunction('cosh ');" />
-				<h:commandButton id="btnexp" styleClass="btn-fn" type="button"
-					 value="exp" onclick="btnfunction('exp ');" />
-				<h:commandButton id="btnfloor" styleClass="btn-fn" type="button"
-					 value="floor" onclick="btnfunction('floor ');" />
-				<h:commandButton id="btnlog" styleClass="btn-fn" type="button"
-					 value="log" onclick="btnfunction('log ');" />
-				<h:commandButton id="btnlog10" styleClass="btn-fn" type="button"
-					 value="log10" onclick="btnfunction('log10 ');" />
-				<h:commandButton id="btnlog2" styleClass="btn-fn" type="button"
-					 value="log2" onclick="btnfunction('log2 ');" />
-				<h:commandButton id="btnsin" styleClass="btn-fn" type="button"
-					 value="sin" onclick="btnfunction('sin ');" />
-				<h:commandButton id="btnsinh" styleClass="btn-fn" type="button"
-					 value="sinh" onclick="btnfunction('sinh ');" />
-				<h:commandButton id="btnsqrt" styleClass="btn-fn" type="button"
-					 value="sqrt" onclick="btnfunction('sqrt ');" />
-				<h:commandButton id="btntan" styleClass="btn-fn" type="button"
-					 value="tan" onclick="btnfunction('tan ');" />
-				<h:commandButton id="btntanh" styleClass="btn-fn" type="button"
-					 value="tanh" onclick="btnfunction('tanh ');" />
-				<h:commandButton id="btnfact" styleClass="btn-fn" type="button"
-					 value="!" onclick="btnfactorial('');" />
-				<h:commandButton id="btn-x-power-y" styleClass="btn-fn" type="button"
-					 value="x^y" onclick="btnfunction('^');" />
-				<h:commandButton id="btn-y-root-x" styleClass="btn-fn" type="button"
-					 value="x log y" onclick="btnyrootx('root');" />
-				<h:commandButton id="btn-x-log-y" styleClass="btn-fn" type="button"
-					 value="y root x" onclick="btnxlogy('root');" />
-			</h:panelGrid>
-			
-			<h:panelGrid id="panel4" columns="4" style="align: centre">	
-				<h:commandButton id="btn7" styleClass="btn-numeric" type="button"
-					 value="7" onclick="btnnumeric('7');" />
-				<h:commandButton id="btn8" styleClass="btn-numeric" type="button"
-					 value="8" onclick="btnnumeric('8');" />
-				<h:commandButton id="btn9" styleClass="btn-numeric" type="button"
-					 value="9" onclick="btnnumeric('9');" />
-				<h:commandButton id="btnplus" styleClass="btn-operation" type="button"
-					 value="+" onclick="btnoperator('+');" />
-					 
-				<h:commandButton id="btn4" styleClass="btn-numeric" type="button"
-					 value="4" onclick="btnnumeric('4');" />
-				<h:commandButton id="btn5" styleClass="btn-numeric" type="button"
-					 value="5" onclick="btnnumeric('5');" />
-				<h:commandButton id="btn6" styleClass="btn-numeric" type="button"
-					 value="6" onclick="btnnumeric('6');" />
-				<h:commandButton id="btnminus" styleClass="btn-operation" type="button"
-					 value="-" onclick="btnoperator('-');" />
-					 
-				<h:commandButton id="btn1" styleClass="btn-numeric" type="button"
-					value="1" onclick="btnnumeric('1');" />
-				<h:commandButton id="btn2" styleClass="btn-numeric" type="button"
-					value="2" onclick="btnnumeric('2');" />
-				<h:commandButton id="btn3" styleClass="btn-numeric" type="button"
-					value="3" onclick="btnnumeric('3');" />
-				<h:commandButton id="btntimes" styleClass="btn-operation" type="button" 
-					value="x" onclick="btnoperator('*');" />
-					
-				<h:commandButton id="btn0" styleClass="btn-numeric" type="button"
-					 value="0" onclick="btnnumeric('0');" />
-				<h:commandButton id="btncoma" styleClass="btn-numeric" type="button"
-					 value="." onclick="btnoperator('.');" />
-				<!--  --> 
-				<h:commandButton id="btndivby" styleClass="btn-operation" type="button"
-					 value="/" onclick="btnoperator('/');" />
-			</h:panelGrid>
-				
-			<h:panelGrid id="panel5" columns="1" style="align: centre">	
-				<h:commandButton id="btnclear" styleClass="btn-clear" type="button"
-					 value="C" onclick="btnclear();" />
-				<h:commandButton id="btnce" styleClass="btn-clear" type="reset"
-					 value="CE" />
-				<h:commandButton id="btnequal" styleClass="btn-execute" type="submit" 
-					 action="#{ cientifica.btnequal() }" value="=" />
-			</h:panelGrid>
-		</h:panelGrid>
-	</h:form>
+
+<h:body>
+	<div id="container" class="ui-grid ui-grid-responsive">
+		<div class="ui-grid-row ">
+			<div class="ui-grid-col-1"></div>
+			<div class="ui-grid-col-8">
+				<p:panelGrid columns="1">
+					<f:facet name="header"> Calculadora Cientifica </f:facet>
+					<h:form id="basicform">
+						<h:panelGrid columns="2" cellpadding="6" cellspacing="2">
+							<em> <a href="./basic.xhtml">Basica</a> </em>
+							
+						</h:panelGrid>
+						<h:panelGroup style="display:block; text-align:centre">
+							<h:inputHidden id="firstdigit" value="#{basica.firstdigit}" />
+							<h:inputTextarea id="scientificdisplay" styleClass="txtareascientificdisplay"
+											title="Preencha aqui a sua expressao matemática"
+											value="#{basica.display}" minlength="1" maxlength="256"
+											rows="5" cols="102" 
+											readonly="true" />
+						</h:panelGroup>
+						
+						<h:panelGrid columns="2">
+							<h:panelGrid columns="4" cellpadding="5">	
+								<p:commandButton id="btnopen" styleClass="btn-fn" type="button"
+									 value="(" onclick="btnfunction('(');" />
+								<p:commandButton id="btnclose" styleClass="btn-fn" type="button"
+									 value=")" onclick="btnfunction(')');" />
+								<p:commandButton id="btnabs" styleClass="btn-fn" type="button"
+									 value="abs" onclick="btnfunction('abs ');" />
+								<p:commandButton id="btnacos" styleClass="btn-fn" type="button"
+									 value="acos" onclick="btnfunction('acos ');" />
+								<p:commandButton id="btnasin" styleClass="btn-fn" type="button"
+									 value="asin" onclick="btnfunction('asin ');" />
+								<p:commandButton id="btnatan" styleClass="btn-fn" type="button"
+									 value="atan" onclick="btnfunction('atan ');" />
+								<p:commandButton id="btncbrt" styleClass="btn-fn" type="button"
+									 value="cbrt" onclick="btnfunction('cbrt ');" />
+								<p:commandButton id="btnceil" styleClass="btn-fn" type="button"
+									 value="ceil" onclick="btnfunction('ceil ');" />
+								<p:commandButton id="btncos" styleClass="btn-fn" type="button"
+									 value="cos" onclick="btnfunction('cos ');" />
+								<p:commandButton id="btncosh" styleClass="btn-fn" type="button"
+									 value="cosh" onclick="btnfunction('cosh ');" />
+								<p:commandButton id="btnexp" styleClass="btn-fn" type="button"
+									 value="exp" onclick="btnfunction('exp ');" />
+								<p:commandButton id="btnfloor" styleClass="btn-fn" type="button"
+									 value="floor" onclick="btnfunction('floor ');" />
+								<p:commandButton id="btnlog" styleClass="btn-fn" type="button"
+									 value="log" onclick="btnfunction('log ');" />
+								<p:commandButton id="btnlog10" styleClass="btn-fn" type="button"
+									 value="log10" onclick="btnfunction('log10 ');" />
+								<p:commandButton id="btnlog2" styleClass="btn-fn" type="button"
+									 value="log2" onclick="btnfunction('log2 ');" />
+								<p:commandButton id="btnsin" styleClass="btn-fn" type="button"
+									 value="sin" onclick="btnfunction('sin ');" />
+								<p:commandButton id="btnsinh" styleClass="btn-fn" type="button"
+									 value="sinh" onclick="btnfunction('sinh ');" />
+								<p:commandButton id="btnsqrt" styleClass="btn-fn" type="button"
+									 value="sqrt" onclick="btnfunction('sqrt ');" />
+								<p:commandButton id="btntan" styleClass="btn-fn" type="button"
+									 value="tan" onclick="btnfunction('tan ');" />
+								<p:commandButton id="btntanh" styleClass="btn-fn" type="button"
+									 value="tanh" onclick="btnfunction('tanh ');" />
+								<p:commandButton id="btnfact" styleClass="btn-fn" type="button"
+									 value="!" onclick="btnfactorial('');" />
+								<p:commandButton id="btn-x-power-y" styleClass="btn-fn" type="button"
+									 value="x^y" onclick="btnfunctionxy('^');" />
+								<p:commandButton id="btn-x-root-y" styleClass="btn-fn" type="button"
+									 value="x root y" onclick="btnfunctionxy('log');" />
+								<p:commandButton id="btn-x-log-y" styleClass="btn-fn" type="button"
+									 value="x log y" onclick="btnfunctionxy('root');" />
+							</h:panelGrid>
+						
+							<h:panelGrid columns="5" cellpadding="5">
+								<h:commandButton id="btnclear" class="button" type="button"
+									value="C" onclick="btnclear();" />
+								<h:commandButton id="btnce" class="button" type="button"
+									value="CE" onclick="btnclearexpression();" />
 	
-	<h:panelGrid columns="1" cellpadding="0" cellspacing="2">
-		<marquee>PAJ, Projeto 2. Autores:  Emília Ribeiro  e  João Martins.</marquee>
-	</h:panelGrid>
-	
-</body>
+								<p:commandButton id="btn1" class="btn-numeric" type="button"
+									value="1" onclick="btnnumeric('1');" />
+								<p:commandButton id="btn2" class="btn-numeric" type="button"
+									value="2" onclick="btnnumeric('2');" />
+								<p:commandButton id="btn3" class="btn-numeric" type="button"
+									value="3" onclick="btnnumeric('3');" />
+								<p:commandButton id="btnplus" class="btn-numeric" type="button"
+									value="+" onclick="btnoperator('+');" />
+								
+								<p:commandButton id="btn4" class="btn-numeric" type="button"
+									value="4" onclick="btnnumeric('4');" />
+								<p:commandButton id="btn5" class="btn-numeric" type="button"
+									value="5" onclick="btnnumeric('5');" />
+								<p:commandButton id="btn6" class="btn-numeric" type="button"
+									value="6" onclick="btnnumeric('6');" />
+								<p:commandButton id="btnminus" class="btn-numeric" type="button"
+									value="-" onclick="btnoperator('-');" />
+								
+								<p:commandButton id="btn7" class="btn-numeric" type="button"
+									value="7" onclick="btnnumeric('7');" />
+								<p:commandButton id="btn8" class="btn-numeric" type="button"
+									value="8" onclick="btnnumeric('8');" />
+								<p:commandButton id="btn9" class="btn-numeric" type="button"
+									value="9" onclick="btnnumeric('9');" />
+								<p:commandButton id="btntimes" class="btn-numeric" type="button"
+									value="&#215;" onclick="btnoperator('*');" />
+								<p></p>
+								<p:commandButton id="btn0" class="btn-numeric" type="button"
+									value="0" onclick="btnnumeric('0');" />
+								<p:commandButton id="btncoma" class="btn-numeric" type="button"
+									value="." onclick="btnoperator('.');" />
+								<h:commandButton id="btnequal" styleClass="btn-equal"
+									type="submit" actionListener="#{basica.btnequal()}" value="=" action="basic.xhtml"  />
+								<p:commandButton id="btndivby" class="btn-numeric" type="button"
+									value="&#247;" onclick="btnoperator('/');" />
+							</h:panelGrid>
+						</h:panelGrid>
+					<f:facet name="footer"> Projecto2 PAJ </f:facet>
+					</h:form>
+				</p:panelGrid>
+				<div class="ui-grid-col-4"></div>
+			</div>
+		</div>
+	</div>
+</h:body>
+
 </html>

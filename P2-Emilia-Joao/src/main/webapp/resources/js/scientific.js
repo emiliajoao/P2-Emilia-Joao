@@ -199,7 +199,10 @@ function btnoperator(simbol){
 				displaytxt=displaytxt+simbol;
 			}
 		}
-		
+		//se digito anterior for factorial
+		else if ( lastchar=="!") {
+				displaytxt=""+displaytxt+simbol;
+		}
 		//se digito anterior for de uma funcao
 		else if ( isfn(lastchar) ) {
 			if (simbol=="-") {
@@ -333,11 +336,11 @@ function btnclear() {
 	else {
 		var lastchar=displaytxt.substr(displaytxt.length-1, 1); //substr(number, lenght)
 		//Se for operador
-		if (lastchar=="-" || lastchar=="+" || lastchar=="*" || lastchar=="/" || lastchar==".") {
+		if (lastchar=="-" || lastchar=="+" || lastchar=="*" || lastchar=="/" || lastchar=="." || lastchar=="^" || lastchar=="!" ) {
 			displaytxt=displaytxt.substr(0, displaytxt.length-1);
 		}
 		//Se for numero
-		else if (isdigit){
+		else if ( isdigit(lastchar) ){
 			for (i=displaytxt.length-1;i>=0;i--) {
 				lastchar=displaytxt.substr(i,1); //substr(number, lenght)
 				if ( isdigit(lastchar) ) {
@@ -391,7 +394,34 @@ function btnclearexpression() {
 
 function btnfactorial() {
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
-	displaytxt=displaytxt+"! <falta implementar em js>"
+	var firstdigit = document.getElementById("scientificform:firstdigit").value;
+	var pi = "3.141592653589793238";
+	
+	if ( firstdigit == "true" ){
+		//alert ('tecla ! - 0.0 Primeiro caracter!');
+		displaytxt="";
+		alert ('Erro: tem que colocar um numero antes desta funcão.');
+		firstdigit = "false";
+		document.getElementById("scientificform:firstdigit").value=firstdigit;
+	}
+	else if ( displaytxt.length < 1){
+		alert ('Erro: tem que colocar um numero antes desta funcão.');
+	}
+	else {
+		var lastchar=displaytxt.substr(displaytxt.length-1, 1); 	
+		if (isoperator(lastchar) || isfn(lastchar) || lastchar=="(") {
+			alert ('Erro: tem que colocar um numero antes desta função.');
+		}
+		else if(lastchar==")" || lastchar=="!") {
+			displaytxt=displaytxt+"!"
+		}
+		else if(isdigit(lastchar)) {
+			displaytxt=displaytxt+"!"
+		}
+		else {
+			alert ('Erro: tem que colocar um numero antes desta funcão.');
+		}
+	}
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 
@@ -416,20 +446,15 @@ function btnxrooty() {
 			alert ('Erro: tem que colocar um numero antes desta função.');
 		}
 		else if(lastchar==")" || lastchar=="!") {
-			displaytxt=""+displaytxt+pi;
+			displaytxt=displaytxt+"^(1/"
 		}
 		else if(isdigit(lastchar)) {
-			displaytxt=""+displaytxt+pi;
+			displaytxt=displaytxt+"^(1/"
 		}
 		else {
 			alert ('Erro: tem que colocar um numero antes desta funcão.');
 		}
 	}
-	
-	
-	
-	
-	displaytxt=displaytxt+"^(1/"
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 

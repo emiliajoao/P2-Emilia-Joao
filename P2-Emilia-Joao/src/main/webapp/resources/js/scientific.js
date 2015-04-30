@@ -102,7 +102,7 @@ function btnnumeric(digito){
 	}
 	else {
 		var lastchar=displaytxt.substr(displaytxt.length-1, 1); 
-		alert('TEST: lastchar = '+lastchar)
+		//alert('TEST: lastchar = '+lastchar)
 		if (isoperator(lastchar) || isfn(lastchar) || isdigit(lastchar) || lastchar=="(" || lastchar==".") {
 			displaytxt=""+displaytxt+digito;
 		}
@@ -154,11 +154,11 @@ function btnoperator(simbol){
 	//se o display nao esta vazio, o caracter anterior tem de ser digito numerico
 	else {
 		var lastchar=displaytxt.substr(displaytxt.length-1, 1); 
-		alert ('TEST: tecla: '+simbol+' last char: '+lastchar);
+		//alert ('TEST: tecla: '+simbol+' last char: '+lastchar);
 		
 		//se digito anterior for numerico
 		if ( isdigit(lastchar) ) {
-			alert ('TEST: é numerico!');
+			//alert ('TEST: é numerico!');
 			//se o operador for ponto
 			if (simbol==".") {
 				//alert ('TEST: simbol=.');
@@ -216,7 +216,7 @@ function btnoperator(simbol){
 		//se digito anterior for um fechar parentices
 		
 		else if (lastchar==")") {
-			alert("TEST: lastchar = )")
+			//alert("TEST: lastchar = )")
 			displaytxt=displaytxt+simbol;
 		}
 		
@@ -308,7 +308,10 @@ function isfn(char){
 		//alert("TEST: Char lenght != 1 ");
 		return false;
 	}
-	else if (char=="s" || char=="n" || char=="t" || char=="l" || char=="h" || char=="p" || char=="r" || char=="g" ) {
+	else if (char=="a" || char=="b" || char=="c" || char=="d" || char=="e" || char=="f" || char=="g" || char=="h" ||
+			 char=="i" || char=="j" || char=="k" || char=="l" || char=="m" || char=="n" || char=="o" || char=="p" || 
+			 char=="q" || char=="r" || char=="s" || char=="t" || char=="u" || char=="v" || char=="w" || char=="x" || 
+			 char=="y" || char=="z" || char=="^") {
 		//alert("TEST: Char is numeric and i will return true !");
 		return true;
 	} 
@@ -334,7 +337,7 @@ function btnclear() {
 			displaytxt=displaytxt.substr(0, displaytxt.length-1);
 		}
 		//Se for numero
-		else {
+		else if (isdigit){
 			for (i=displaytxt.length-1;i>=0;i--) {
 				lastchar=displaytxt.substr(i,1); //substr(number, lenght)
 				if ( isdigit(lastchar) ) {
@@ -349,6 +352,27 @@ function btnclear() {
 					break;
 				}
 			}
+		}
+		//se for parentices
+		else if (lastchar=="(" || lastchar==")") {
+			displaytxt=displaytxt.substr(0, displaytxt.length-1);
+		}
+		//se for funcao
+		else if ( isfn(lastchar) ) {
+			for (i=displaytxt.length-1;i>=0;i--) {
+				lastchar=displaytxt.substr(i,1); //substr(number, lenght)
+				if ( isfn(lastchar) ) {
+					displaytxt=displaytxt.substr(0, displaytxt.length-1);
+					//alert("TEST: displaytxt="+displaytxt);
+				}
+				else {
+					break;
+				}
+			}
+		}
+		//qq outra situacao apaga ultimo caracter
+		else {
+			displaytxt=displaytxt.substr(0, displaytxt.length-1);
 		}
 	}
 	
@@ -373,12 +397,12 @@ function btnfactorial() {
 
 function btnxrooty() {
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
-	displaytxt=displaytxt+"x root y <falta implementar em js>"
+	displaytxt=displaytxt+"^(1/"
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 
-function btnxlogy() {
+function btnpi() {
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
-	displaytxt=displaytxt+"x root y <falta implementar em js>"
+	displaytxt=displaytxt+"pi";
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }

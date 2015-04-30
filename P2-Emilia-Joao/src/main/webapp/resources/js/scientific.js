@@ -251,11 +251,14 @@ function btnoperator(simbol){
 				displaytxt=displaytxt+"0"+simbol;
 			}
 			else if (simbol=="-") {
-				if (lastchar=="-") {
+				if (lastchar!="-") {
+					displaytxt=""+displaytxt+simbol;
+				}
+				else if (lastchar=="-") {
 					alert ('Erro: com o operador'+simbol+' a expressão fica inválida.\nUlilizar a operador "+" em vez de "--"');
 				}
 				else {
-					displaytxt=""+displaytxt+simbol;
+					alert ('Erro: com o operador'+simbol+' a expressão fica inválida.\nTem que utilizar um numero ou função antes de\npoder utilizar outro operador.');
 				}
 			}
 		}

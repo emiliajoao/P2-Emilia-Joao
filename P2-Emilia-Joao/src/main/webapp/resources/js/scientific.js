@@ -397,13 +397,62 @@ function btnfactorial() {
 
 function btnxrooty() {
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
+	var firstdigit = document.getElementById("scientificform:firstdigit").value;
+	var pi = "3.141592653589793238";
+	
+	if ( firstdigit == "true" ){
+		//alert ('tecla pi - 0.0 Primeiro caracter!');
+		displaytxt="";
+		alert ('Erro: tem que colocar um numero antes desta funcão.');
+		firstdigit = "false";
+		document.getElementById("scientificform:firstdigit").value=firstdigit;
+	}
+	else if ( displaytxt.length < 1){
+		alert ('Erro: tem que colocar um numero antes desta funcão.');
+	}
+	else {
+		var lastchar=displaytxt.substr(displaytxt.length-1, 1); 	
+		if (isoperator(lastchar) || isfn(lastchar) || lastchar=="(") {
+			alert ('Erro: tem que colocar um numero antes desta funcão.');
+		}
+		else if(isdigit(lastchar)) {
+			displaytxt=""+displaytxt+pi;
+		}
+		else {
+			alert ('Erro: tem que colocar um numero antes desta funcão.');
+		}
+	}
+	
+	
+	
+	
 	displaytxt=displaytxt+"^(1/"
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 
 function btnpi() {
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
+	var firstdigit = document.getElementById("scientificform:firstdigit").value;
 	var pi = "3.141592653589793238";
-	displaytxt=displaytxt+pi;
+	
+	if ( firstdigit == "true" ){
+		//alert ('tecla pi - 0.0 Primeiro caracter!');
+		displaytxt=""+pi;
+		firstdigit = "false";
+		document.getElementById("scientificform:firstdigit").value=firstdigit;
+	}
+	else if ( displaytxt.length < 1){
+		displaytxt=""+pi;
+	}
+	else {
+		var lastchar=displaytxt.substr(displaytxt.length-1, 1); 	
+		if (isoperator(lastchar) || isfn(lastchar) || lastchar=="(") {
+			displaytxt=""+displaytxt+pi;
+		}
+		else if(isdigit(lastchar)) {
+			alert ('Erro: tem que colocar um operador ou abrir parentices antes de PI.');
+		}
+	}
+	
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }

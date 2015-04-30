@@ -415,6 +415,9 @@ function btnxrooty() {
 		if (isoperator(lastchar) || isfn(lastchar) || lastchar=="(") {
 			alert ('Erro: tem que colocar um numero antes desta funcão.');
 		}
+		else if(lastchar==")" || lastchar=="!") {
+			displaytxt=""+displaytxt+pi;
+		}
 		else if(isdigit(lastchar)) {
 			displaytxt=""+displaytxt+pi;
 		}

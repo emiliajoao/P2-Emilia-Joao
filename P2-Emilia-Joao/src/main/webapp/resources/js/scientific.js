@@ -413,7 +413,7 @@ function btnxrooty() {
 	else {
 		var lastchar=displaytxt.substr(displaytxt.length-1, 1); 	
 		if (isoperator(lastchar) || isfn(lastchar) || lastchar=="(") {
-			alert ('Erro: tem que colocar um numero antes desta funcão.');
+			alert ('Erro: tem que colocar um numero antes desta função.');
 		}
 		else if(lastchar==")" || lastchar=="!") {
 			displaytxt=""+displaytxt+pi;

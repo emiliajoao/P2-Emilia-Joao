@@ -1,19 +1,25 @@
 package pt.uc.dei.aor.paj;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.TreeMap;
 
-import javax.faces.bean.ApplicationScoped;
+import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Named;
+
 @Named
 @ApplicationScoped
 public class Estatistica implements Serializable{
+	private static final long serialVersionUID = -8001386905558621067L;
+	
 	private HashMap<String, Integer> cont;
 	private TreeMap<String, Integer> mapa;
-
+	private ArrayList<String> resultado;
+	
+	
 	public Estatistica() {
-		super();
+		
 		this.cont = new HashMap<String, Integer>();
 		this.cont.put("+",0);
 		this.cont.put("-",0);
@@ -37,110 +43,128 @@ public class Estatistica implements Serializable{
 		this.cont.put("sqrt",0);
 		this.cont.put("tan",0);
 		this.cont.put("tanh",0);
+		this.mapa=new TreeMap<String, Integer>();
+		this.resultado=new ArrayList<String>();
 	}
 
+	public ArrayList<String> getResultado(){
+			
+			String aux="";
+			this.resultado.add(aux);
+		if (this.mapa.size()>0){
+			this.resultado=new ArrayList<String>();
+			for(String op:this.mapa.keySet()){
+				aux=op+" :  "+ getContOperador(op);
+				this.resultado.add(aux);
+			}
+		}
+		return this.resultado; 
+		
+	}
+	
+	public void setResultado(String exp){
+		decompoe(exp);
+		this.mapa=mapaOrdenado();
+		
+	}
+	
 	private void decompoe(String exp){
-		int i=0;
 		int j=exp.length();
 		if (exp.startsWith("-")){
 			exp=exp.substring(1,j);
-			i++;
 			j=j-1;}
 		while(j>=1){
 			if (exp.startsWith("+")){
 				adiciona("+");
 				exp=exp.substring(1,j);
-				i++;
 				j=j-1;
 			}else if (exp.startsWith("-")){
 				exp=exp.substring(1,j);
 				if (!exp.startsWith("(")){
 					adiciona("-");}
-				i++;
 				j=j-1;
 			}else if (exp.startsWith("*")){
 				adiciona("*");
 				exp=exp.substring(1,j);
-				i++;j=j-1;
+				j=j-1;
 			}else if (exp.startsWith("/")){
 				adiciona("/");
 				exp=exp.substring(1,j);
-				i++;j=j-1;
+				j=j-1;
 			}else if (exp.startsWith("abs")){
 				adiciona("abs");
 				exp=exp.substring(3,j);
-				i+=3;j=j-3;
+				j=j-3;
 			}else if (exp.startsWith("acos")){
 				adiciona("acos");
 				exp=exp.substring(4,j);
-				i+=4;j=j-4;
+				j=j-4;
 			}else if (exp.startsWith("asin")){
 				adiciona("asin");
 				exp=exp.substring(4,j);
-				i+=4;j=j-4;
+				j=j-4;
 			}else if (exp.startsWith("atan")){
 				adiciona("atan");
 				exp=exp.substring(4,j);
-				i+=4;j=j-4;
+				j=j-4;
 			}else if (exp.startsWith("cbrt")){
 				adiciona("cbrt");
 				exp=exp.substring(4,j);
-				i+=4;j=j-4;
+				j=j-4;
 			}else if (exp.startsWith("ceil")){
 				adiciona("ceil");
 				exp=exp.substring(4,j);
-				i+=4;j=j-4;
+				j=j-4;
 			}else if (exp.startsWith("cosh")){
 				adiciona("cosh");
 				exp=exp.substring(4,j);
-				i+=4;j=j-4;
+				j=j-4;
 			}else if (exp.startsWith("cos")){
 				adiciona("cos");
 				exp=exp.substring(3,j);
-				i+=3;j=j-3;
+				j=j-3;
 			}else if (exp.startsWith("exp")){
 				adiciona("exp");
 				exp=exp.substring(3,j);
-				i+=3;j=j-3;
+				j=j-3;
 			}else if (exp.startsWith("floor")){
 				adiciona("floor");
 				exp=exp.substring(5,j);
-				i+=5;j=j-5;
+				j=j-5;
 			}else if (exp.startsWith("log2")){
 				adiciona("log2");
 				exp=exp.substring(4,j);
-				i+=4;j=j-4;
+				j=j-4;
 			}else if (exp.startsWith("log10")){
 				adiciona("log10");
 				exp=exp.substring(5,j);
-				i+=5;j=j-5;
+				j=j-5;
 			}else if (exp.startsWith("log")){
 				adiciona("log");
 				exp=exp.substring(3,j);
-				i+=3;j=j-3;
+				j=j-3;
 			}else if (exp.startsWith("sinh")){
 				adiciona("sinh");
 				exp=exp.substring(4,j);
-				i+=4;j=j-4;
+				j=j-4;
 			}else if (exp.startsWith("sin")){
 				adiciona("sin");
 				exp=exp.substring(3,j);
-				i+=3;j=j-3;
+				j=j-3;
 			}else if (exp.startsWith("sqrt")){
 				adiciona("sqrt");
 				exp=exp.substring(4,j);
-				i+=4;j=j-4;
+				j=j-4;
 			}else if (exp.startsWith("tanh")){
 				adiciona("tanh");
 				exp=exp.substring(4,j);
-				i+=4;j=j-4;
+				j=j-4;
 			}else if (exp.startsWith("tan")){
 				adiciona("tan");
 				exp=exp.substring(3,j);
-				i+=3;j=j-3;
+				j=j-3;
 			}else {
-				exp=exp.substring(1,j);	
-				i++;
+				exp=exp.substring(1,j);
 				j=j-1;
 			}
 		}
@@ -162,19 +186,10 @@ public class Estatistica implements Serializable{
 		sortedMap.putAll(map);
 		return sortedMap;
 	}
-	public String getResultado(){
-		String aux="";
-		for(String op:this.mapa.keySet()){
-			aux+=op +" "+ getContOperador(op)+"\n";
-		}
-		return aux;
-	}
-	public void setResultado(String exp){
-		decompoe(exp);
-		this.mapa=mapaOrdenado();
-	}
+	
 	//devolve a quantidade por operador
 	private int getContOperador(String operador){
 		return this.cont.get(operador);
 	}
+	
 }

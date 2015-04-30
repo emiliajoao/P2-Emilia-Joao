@@ -1,5 +1,6 @@
 package pt.uc.dei.aor.paj;
 
+
 public class Funcao {
 	private String operador;
 	private String definicao;
@@ -26,5 +27,4 @@ public class Funcao {
 		this.definicao = definicao;
 	}
 
-	
 }

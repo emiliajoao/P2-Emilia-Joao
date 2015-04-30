@@ -403,6 +403,7 @@ function btnxrooty() {
 
 function btnpi() {
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
-	displaytxt=displaytxt+"3.141592653589793238";
+	var pi = "3.141592653589793238";
+	displaytxt=displaytxt+pi;
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }

@@ -11,11 +11,18 @@ import javax.inject.Named;
 @RequestScoped
 public class Basica implements Serializable {
 	@Inject Calculadora calc ;
-	private String display="0.0";
-	private String firstdigit="true";
+	private String display;
+	private String firstdigit;
+	private String btnradio;
 	private String resultado;
-
 	
+	public Basica() {
+		this.display = "0.0";
+		this.resultado = "0.0";
+		this.firstdigit = "true";
+		this.btnradio = "rad";
+	}
+
 	public String getDisplay() {
 		return resultado;
 	}
@@ -30,6 +37,14 @@ public class Basica implements Serializable {
 
 	public void setFirstdigit(String firstdigit) {
 		this.firstdigit = firstdigit;
+	}
+
+	public String getBtnradio() {
+		return btnradio;
+	}
+
+	public void setBtnradio(String btnradio) {
+		this.btnradio = btnradio;
 	}
 
 	public void btnequal() {

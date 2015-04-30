@@ -21,9 +21,14 @@
 					<f:facet name="header"> Calculadora Cientifica </f:facet>
 					<h:form id="scientificform">
 						<h:panelGrid columns="2" cellpadding="6" cellspacing="2">
-							<em> <a href="./basic.xhtml">Basica</a> </em>
 							
+							<h:selectOneRadio value="#{basica.btnradio}">
+					   			<f:selectItem itemValue="rad" itemLabel="Radianos" />
+					   			<f:selectItem itemValue="deg" itemLabel="Graus" />
+					   		</h:selectOneRadio>
+					   		<em> <a href="./basic.xhtml">Basica</a> </em>
 						</h:panelGrid>
+						
 						<h:panelGroup style="display:block; text-align:centre">
 							<h:inputHidden id="firstdigit" value="#{basica.firstdigit}" />
 							<h:inputTextarea id="scientificdisplay" styleClass="txtareascientificdisplay"
@@ -33,54 +38,54 @@
 						
 						<h:panelGrid columns="2">
 							<h:panelGrid columns="4" cellpadding="2">	
-								<p:commandButton id="btnopen" styleClass="btn-fn" type="button"
-									 value="(" onclick="btnfunction('(');" />
-								<p:commandButton id="btnclose" styleClass="btn-fn" type="button"
-									 value=")" onclick="btnfunction(')');" />
-								<p:commandButton id="btnabs" styleClass="btn-fn" type="button"
+								<p:commandButton id="btnopen" class="btn-fn" type="button"
+									 value="(" onclick="btnparentices('(');" />
+								<p:commandButton id="btnclose" class="btn-fn" type="button"
+									 value=")" onclick="btnparentices(')');" />
+								<p:commandButton id="btnabs" class="btn-fn" type="button"
 									 value="abs" onclick="btnfunction('abs');" />
-								<p:commandButton id="btnacos" styleClass="btn-fn" type="button"
+								<p:commandButton id="btnacos" class="btn-fn" type="button"
 									 value="acos" onclick="btnfunction('acos');" />
-								<p:commandButton id="btnasin" styleClass="btn-fn" type="button"
+								<p:commandButton id="btnasin" class="btn-fn" type="button"
 									 value="asin" onclick="btnfunction('asin');" />
-								<p:commandButton id="btnatan" styleClass="btn-fn" type="button"
+								<p:commandButton id="btnatan" class="btn-fn" type="button"
 									 value="atan" onclick="btnfunction('atan');" />
-								<p:commandButton id="btncbrt" styleClass="btn-fn" type="button"
+								<p:commandButton id="btncbrt" class="btn-fn" type="button"
 									 value="cbrt" onclick="btnfunction('cbrt');" />
-								<p:commandButton id="btnceil" styleClass="btn-fn" type="button"
+								<p:commandButton id="btnceil" class="btn-fn" type="button"
 									 value="ceil" onclick="btnfunction('ceil');" />
-								<p:commandButton id="btncos" styleClass="btn-fn" type="button"
+								<p:commandButton id="btncos" class="btn-fn" type="button"
 									 value="cos" onclick="btnfunction('cos');" />
-								<p:commandButton id="btncosh" styleClass="btn-fn" type="button"
+								<p:commandButton id="btncosh" class="btn-fn" type="button"
 									 value="cosh" onclick="btnfunction('cosh');" />
-								<p:commandButton id="btnexp" styleClass="btn-fn" type="button"
+								<p:commandButton id="btnexp" class="btn-fn" type="button"
 									 value="exp" onclick="btnfunction('exp');" />
-								<p:commandButton id="btnfloor" styleClass="btn-fn" type="button"
+								<p:commandButton id="btnfloor" class="btn-fn" type="button"
 									 value="floor" onclick="btnfunction('floor');" />
-								<p:commandButton id="btnlog" styleClass="btn-fn" type="button"
+								<p:commandButton id="btnlog" class="btn-fn" type="button"
 									 value="log" onclick="btnfunction('log');" />
-								<p:commandButton id="btnlog10" styleClass="btn-fn" type="button"
-									 value="log10" onclick="btnfunction('log10');" />
-								<p:commandButton id="btnlog2" styleClass="btn-fn" type="button"
-									 value="log2" onclick="btnfunction('log2');" />
-								<p:commandButton id="btnsin" styleClass="btn-fn" type="button"
+								<p:commandButton id="btnlog10" class="btn-fn" type="button"
+									 value="log10" onclick="btnfunction('log10(');" />
+								<p:commandButton id="btnlog2" class="btn-fn" type="button"
+									 value="log2" onclick="btnfunction('log2(');" />
+								<p:commandButton id="btnsin" class="btn-fn" type="button"
 									 value="sin" onclick="btnfunction('sin');" />
-								<p:commandButton id="btnsinh" styleClass="btn-fn" type="button"
+								<p:commandButton id="btnsinh" class="btn-fn" type="button"
 									 value="sinh" onclick="btnfunction('sinh');" />
-								<p:commandButton id="btnsqrt" styleClass="btn-fn" type="button"
+								<p:commandButton id="btnsqrt" class="btn-fn" type="button"
 									 value="sqrt" onclick="btnfunction('sqrt');" />
-								<p:commandButton id="btntan" styleClass="btn-fn" type="button"
+								<p:commandButton id="btntan" class="btn-fn" type="button"
 									 value="tan" onclick="btnfunction('tan');" />
-								<p:commandButton id="btntanh" styleClass="btn-fn" type="button"
+								<p:commandButton id="btntanh" class="btn-fn" type="button"
 									 value="tanh" onclick="btnfunction('tanh');" />
-								<p:commandButton id="btnfact" styleClass="btn-fn" type="button"
-									 value="!" onclick="btnfactorial('!');" />
-								<p:commandButton id="btn-x-power-y" styleClass="btn-fn" type="button"
-									 value="x^y" onclick="btnfunctionxy('^');" />
-								<p:commandButton id="btn-x-root-y" styleClass="btn-fn" type="button"
-									 value="x root y" onclick="btnfunctionxy('log');" />
-								<p:commandButton id="btn-x-log-y" styleClass="btn-fn" type="button"
-									 value="x log y" onclick="btnfunctionxy('root');" />
+								<p:commandButton id="btnfact" class="btn-fn" type="button"
+									 value="!" onclick="btnfactorial();" />
+								<p:commandButton id="btn-x-power-y" class="btn-fn" type="button"
+									 value="x^y" onclick="btnoperator('^');" />
+								<p:commandButton id="btn-x-root-y" class="btn-fn" type="button"
+									 value="x root y" onclick="btnxrooty();" />
+								<p:commandButton id="btn-x-log-y" class="btn-fn" type="button"
+									 value="x log y" onclick="btnxlogy();" />
 							</h:panelGrid>
 						
 							<h:panelGrid columns="5" cellpadding="5">

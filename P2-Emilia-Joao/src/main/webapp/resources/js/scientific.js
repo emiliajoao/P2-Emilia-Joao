@@ -25,7 +25,7 @@ function btnparentices(fname){
 	}
 	else {
 		var lastchar=displaytxt.substr(displaytxt.length-1, 1); 	
-		if (isoperator(lastchar) || isfn(lastchar)) {
+		if (isoperator(lastchar) || isfn(lastchar) || lastchar=="(") {
 			if (fname=="(") {
 				displaytxt=""+displaytxt+fname;
 			}
@@ -33,9 +33,31 @@ function btnparentices(fname){
 				alert ('Erro: tem que digitar um numero primeiro antes de fechar parentices!');
 			}
 		}
-		else if (isdigit(lastchar)) {
+		else if (isdigit(lastchar) || lastchar==")") {
 			if (fname==")") {
-				displaytxt=""+displaytxt+fname;
+				var contador = 0;
+				for (i=displaytxt.length-1;i>=0;i--) {
+					var prevchar=displaytxt.substr(i,1); 
+					if ( prevchar==")" ) {
+						//alert ('TEST: fechar parentices!');
+						contador--;
+					}
+					else if ( prevchar=="(" ) {
+						//alert ('TEST: abrir parentices!');
+						contador++;
+					}
+					// se caracter for digito numerico e chegarmos ao inicio da string
+					else  {
+						//alert ('TEST: nao e parentices!');
+					}
+				}
+				if (contador > 0) {
+					//alert ('TEST: contador='+contador+' e vai fechar parentices!');
+					displaytxt=""+displaytxt+fname;
+				}
+				else {
+					alert ('Erro: tem que abrir primeiro parentices antes de os fechar!');
+				}
 			}
 			else if (fname=="("){
 				alert ('Erro: primeiro tem que digitar um operador ou função antes de abrir parentices!');
@@ -45,7 +67,7 @@ function btnparentices(fname){
 			}
 		}
 		else {
-			alert ('Erro: Situação ainda não prevista!\nContactar administrador de sistemas.');
+			alert ('Erro: Situação não prevista!\nContactar administrador de sistemas.');
 		}
 	}
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
@@ -383,7 +405,7 @@ function btnclear() {
 }
 
 /**
- * Button clear expression: inicializa display with 0.0
+ * Button clear expression: Reset display with 0.0
  */
 function btnclearexpression() {
 	var displaytxt = "0.0";

@@ -510,10 +510,12 @@ function btnpi() {
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 
+document.onkeydown = function (e) {
+    return false;
+}	
+
 $(document).ready(function(){
-	alert("ssss");
 	$('#hist1 > li').on("click",function(e){
 		document.getElementById("scientificform:scientificdisplay").value=e.target.innerHTML;
-		alert("tttt");
 	});
 });

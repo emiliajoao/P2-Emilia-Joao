@@ -191,6 +191,10 @@ function btnclearexpression() {
 	document.getElementById("basicform:basicdisplay").value=displaytxt;
 }
 
+document.onkeydown = function (e) {
+    return false;
+}	
+
 $(document).ready(function(){
 	$('#hist > li').on("click",function(e){
 		document.getElementById("basicform:basicdisplay").value=e.target.innerHTML;

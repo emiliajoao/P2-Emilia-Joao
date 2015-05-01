@@ -191,10 +191,10 @@ li{
 	width:100%;
 	
 }
-#hist > li {
+#hist > li,#hist1 > li {
 	padding:5px;
 }
-#hist > li:hover{
+#hist > li:hover,#hist1 > li:hover {
 	cursor:pointer;
 	background-color:#11B7D2;
 	opacity:0.6;

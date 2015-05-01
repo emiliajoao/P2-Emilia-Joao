@@ -30,10 +30,10 @@ public class Calculadora implements Serializable{
 	    public double apply(double... args) {
 	        final int arg = (int) args[0];
 	        if ((double) arg != args[0]) {
-	            throw new IllegalArgumentException("Operand for factorial has to be an integer");
+	            throw new IllegalArgumentException("O operando do factorial tem de ser inteiro");
 	        }
 	        if (arg < 0) {
-	            throw new IllegalArgumentException("The operand of the factorial can not be less than zero");
+	            throw new IllegalArgumentException("O operando do factorial não pode ser inferior a zero");
 	        }
 	        double result = 1;
 	        for (int i = 1; i <= arg; i++) {

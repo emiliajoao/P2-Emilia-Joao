@@ -1,4 +1,10 @@
-/* pagina calculadora normal */
+html,body{
+	margin:0;
+	padding:0;
+	border:0;
+	
+}
+
 body{
 background-image: url("../images/fundo2.jpg");
 }
@@ -6,7 +12,17 @@ background-image: url("../images/fundo2.jpg");
 	background-color: #ffff80;
 	align: center;
 }
-
+.est{
+  	padding: 0.3em 0.5em 0.3em;
+    padding-top: 0.5em;
+    padding-right-value: 1em;
+    padding-bottom: 0.3em;
+    padding-left-value: 1em;
+    padding-left-ltr-source: physical;
+    padding-left-rtl-source: physical;
+    padding-right-ltr-source: physical;
+    padding-right-rtl-source: physical;
+}
 .button {
    border-top: 1px solid #d1cdcd;
    background: #e32929;
@@ -50,9 +66,9 @@ background-image: url("../images/fundo2.jpg");
   	font:bold 20px Arial;
 }
 #container{
-	margin-top:80px!important;
-	width:960px;
-	margin:80px auto 0px auto;
+	margin-top:40px!important;
+	width:1250px;
+	margin:40px auto 0px auto;
 	
 }
 
@@ -154,4 +170,43 @@ background-image: url("../images/fundo2.jpg");
     align: left;
     valign: button;
     font:18px Arial;
+}
+ul{
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+	width:100%;
+
+
+.tipoCalc{
+	float:right;
+}
+
+a:link,a:active,a:visited{
+	text-decoration:none;
+}
+
+li{
+	display:block;
+	width:100%;
+	
+}
+#hist > li {
+	padding:5px;
+}
+#hist > li:hover{
+	cursor:pointer;
+	background-color:#11B7D2;
+	opacity:0.6;
+	moz-opacity;0.6;
+	border-radius:5px;
+	color:#ffffff;
+}
+
+.painelHist{
+	 float: right;
+}
+
+#basic_footer{
+	font-size:0.8em;
 }

@@ -190,3 +190,9 @@ function btnclearexpression() {
 	document.getElementById("basicform:firstdigit").value=firstdigit;
 	document.getElementById("basicform:basicdisplay").value=displaytxt;
 }
+
+$(document).ready(function(){
+	$('#hist > li').on("click",function(e){
+		document.getElementById("basicform:basicdisplay").value=e.target.innerHTML;
+	});
+});

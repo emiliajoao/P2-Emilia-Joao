@@ -76,5 +76,13 @@ public class PickListView implements Serializable {
 		FacesContext context = FacesContext.getCurrentInstance();
 		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
 				"List Reordered", null));
+	}
+
+	public List<String> getHist() {
+		return hist;
+	}
+
+	public void setHist(List<String> hist) {
+		this.hist = hist;
 	} 
 }

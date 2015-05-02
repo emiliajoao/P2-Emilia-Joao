@@ -210,3 +210,22 @@ li{
 #basic_footer{
 	font-size:0.8em;
 }
+
+th,.tabela td{
+	font:normal 1.2em arial;
+	color:#666666;
+}
+.tabela td{
+	padding:0px 10px;
+}
+.tabela td, footer{
+	font:normal .9em arial;
+}
+
+footer{
+	color:#666666;
+	text-align: center;
+	margin-top:30px;
+	padding: 10px;
+	background-color:#ddd;
+}

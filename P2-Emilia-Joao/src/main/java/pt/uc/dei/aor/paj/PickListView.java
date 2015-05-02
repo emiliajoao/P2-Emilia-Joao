@@ -21,35 +21,26 @@ import org.primefaces.model.DualListModel;
 public class PickListView implements Serializable {
 	private static final long serialVersionUID = -1183677189929476404L;
 	
-	private DualListModel<String> historico;
+	//private DualListModel<String> historico;
 	private List<String> hist;
-	private List<String> selcecao;
-	private String itemSelect;
+	//private List<String> selcecao;
+	
 
 	
 	@PostConstruct
 	public void init() {
 		hist = new ArrayList<String>();
-		selcecao = new ArrayList<String>();
-		hist.add("2+3");   
-		hist.add("8+9");
-		historico = new DualListModel<String>(hist, selcecao);
-		itemSelect="$";
+	//	selcecao = new ArrayList<String>();
+		hist.add(" ");   
+	//	historico = new DualListModel<String>(hist, selcecao);
+	
 	}
 
 	public void init(String exp){
 		hist.add(exp);
-		historico.setSource(hist);
+		//historico.setSource(hist);
 	}
-	public void setItemSelect(String itemSelect){
-		this.itemSelect=itemSelect;
-		
-
-	}
-	public String getItemSelect(){
-		return  this.itemSelect;
-	}
-	
+/*
 	public DualListModel<String> getHistorico() {
 		return historico;
 	}
@@ -57,26 +48,26 @@ public class PickListView implements Serializable {
 	public void setHistorico(DualListModel<String> historico) {
 		this.historico=historico;
 	}
-
-	public void onSelect(SelectEvent event) {
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-				"Item Selected", event.getObject().toString()));
-		
-	}
-
-	public void onUnselect(UnselectEvent event) {
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-				"Item Unselected", event.getObject().toString()));
-
-	}
-
-	public void onReorder() {
-		FacesContext context = FacesContext.getCurrentInstance();
-		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
-				"List Reordered", null));
-	}
+*/
+//	public void onSelect(SelectEvent event) {
+//		FacesContext context = FacesContext.getCurrentInstance();
+//		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+//				"Item Selected", event.getObject().toString()));
+//		
+//	}
+//
+//	public void onUnselect(UnselectEvent event) {
+//		FacesContext context = FacesContext.getCurrentInstance();
+//		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+//				"Item Unselected", event.getObject().toString()));
+//
+//	}
+//
+//	public void onReorder() {
+//		FacesContext context = FacesContext.getCurrentInstance();
+//		context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO, 
+//				"List Reordered", null));
+//	}
 
 	public List<String> getHist() {
 		return hist;

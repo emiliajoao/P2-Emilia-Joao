@@ -1,7 +1,7 @@
 function btnparentices(fname){
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
 	var firstdigit = document.getElementById("scientificform:firstdigit").value;
-	
+
 	if ( firstdigit == "true" ){
 		//alert ('tecla '+fname+' - 0.0 Primeiro caracter!');
 		displaytxt=""+fname;
@@ -11,7 +11,7 @@ function btnparentices(fname){
 			displaytxt=""+fname;
 		}
 		else {
-			alert ('Erro: tem que abrir parentices primeiro!');
+			alert ('Erro: tem que abrir parêntesis primeiro!');
 		}
 	}
 	else if ( displaytxt.length < 1){
@@ -20,7 +20,7 @@ function btnparentices(fname){
 			displaytxt=""+fname;
 		}
 		else {
-			alert ('Erro: tem que abrir parentices primeiro!');
+			alert ('Erro: tem que abrir parêntesis primeiro!');
 		}
 	}
 	else {
@@ -30,7 +30,7 @@ function btnparentices(fname){
 				displaytxt=""+displaytxt+fname;
 			}
 			else {
-				alert ('Erro: tem que digitar um numero primeiro antes de fechar parentices!');
+				alert ('Erro: tem que digitar um numero primeiro antes de fechar parêntesis!');
 			}
 		}
 		else if (isdigit(lastchar) || lastchar==")") {
@@ -39,36 +39,27 @@ function btnparentices(fname){
 				for (i=displaytxt.length-1;i>=0;i--) {
 					var prevchar=displaytxt.substr(i,1); 
 					if ( prevchar==")" ) {
-						//alert ('TEST: fechar parentices!');
+						
 						contador--;
 					}
 					else if ( prevchar=="(" ) {
-						//alert ('TEST: abrir parentices!');
+						
 						contador++;
-					}
-					// se caracter for digito numerico e chegarmos ao inicio da string
-					else  {
-						//alert ('TEST: nao e parentices!');
 					}
 				}
 				if (contador > 0) {
-					//alert ('TEST: contador='+contador+' e vai fechar parentices!');
 					displaytxt=""+displaytxt+fname;
 				}
 				else {
-					alert ('Erro: tem que abrir primeiro parentices antes de os fechar!');
+					alert ('Erro: tem que abrir primeiro parêntesis antes de os fechar!');
 				}
 			}
 			else if (fname=="("){
-				alert ('Erro: primeiro tem que digitar um operador ou função antes de abrir parentices!');
+				alert ('Erro: primeiro tem que digitar um operador ou função antes de abrir parêntesis!');
 			}
-			else {
-				alert ('Erro: parametro invalido '+fname+' na funcao btnparentices!\nContactar administrador de sistemas.');
-			}
+
 		}
-		else {
-			alert ('Erro: Situação não prevista!\nContactar administrador de sistemas.');
-		}
+
 	}
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
@@ -76,25 +67,25 @@ function btnparentices(fname){
 function btnfunction(fname){
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
 	var firstdigit = document.getElementById("scientificform:firstdigit").value;
-	
+
 	if ( firstdigit == "true" ){
-		//alert ('tecla '+fname+' - 0.0 Primeiro caracter!');
+		
 		displaytxt=""+fname;
 		firstdigit = "false";
 		document.getElementById("scientificform:firstdigit").value=firstdigit;
 	}
 	else if ( displaytxt.length < 1){
-		//alert ('tecla '+fname+' - Primeiro caracter!');
+		
 		displaytxt=""+fname;
 	}
 	else {
 		var lastchar=displaytxt.substr(displaytxt.length-1, 1); 
-		//alert ('tecla '+fname+' - Primeiro caracter!');
+		
 		if (isoperator(lastchar)) {
 			displaytxt=""+displaytxt+fname;
 		}
 		else if (lastchar=="("){
-			//alert ('tecla '+fname+' - Primeiro caracter!');
+			
 			displaytxt=""+displaytxt+fname;
 		}
 		else {
@@ -111,28 +102,25 @@ function btnfunction(fname){
 function btnnumeric(digito){
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
 	var firstdigit = document.getElementById("scientificform:firstdigit").value;
-	
+
 	if ( firstdigit == "true" ){
-		//alert ('tecla '+digito+' - 0.0 Primeiro caracter!');
+	
 		displaytxt=""+digito;
 		firstdigit = "false";
 		document.getElementById("scientificform:firstdigit").value=firstdigit;
 	}
 	else if ( displaytxt.length < 1){
-		//alert ('tecla '+digito+' - Primeiro caracter!');
+		
 		displaytxt=""+digito;
 	}
 	else {
 		var lastchar=displaytxt.substr(displaytxt.length-1, 1); 
-		//alert('TEST: lastchar = '+lastchar)
+	
 		if (isoperator(lastchar) || isfn(lastchar) || isdigit(lastchar) || lastchar=="(" || lastchar==".") {
 			displaytxt=""+displaytxt+digito;
 		}
 		else if (lastchar==")") {
 			alert ('Erro: tecla '+digito+'\nPrimeiro tem que introduzir um operador ou função!');
-		}
-		else {
-			alert ('Erro 02: Situação ainda não prevista!\nContactar administrador de sistemas.');
 		}
 	}
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
@@ -145,27 +133,26 @@ function btnnumeric(digito){
 function btnoperator(simbol){
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
 	var firstdigit = document.getElementById("scientificform:firstdigit").value;
-	//alert ('TEST: tecla: '+simbol);
-	//Se for primeiro digito, continua a expressao como ja tendo digitos
+	
 	if ( firstdigit == "true" ){
 		firstdigit = "false";
 		document.getElementById("scientificform:firstdigit").value=firstdigit;
-		//Se for 0.0 apaga texto do ecra. qq outro valor mantem e segue construcao da expressao
+		
 		if (displaytxt=="0.0") {
 			displaytxt="";
 		}
 	}
-	//Se o display estiver vazio
+	
 	if ( displaytxt.length < 1 ) {
 		//se for o sinal "-" inicia a string
-		//alert ('TEST: tecla: '+simbol);
+		
 		if (simbol=="-") {
-			//alert ('TEST: simbol == -');
+			
 			displaytxt=""+simbol;
 		}
 		//se for o "." inicia a string com "0."
 		else if (simbol==".") {
-			//alert ('TEST: simbol == .');
+			
 			displaytxt="0"+simbol;
 		}
 		//caso contrario é um erro
@@ -176,14 +163,14 @@ function btnoperator(simbol){
 	//se o display nao esta vazio, o caracter anterior tem de ser digito numerico
 	else {
 		var lastchar=displaytxt.substr(displaytxt.length-1, 1); 
-		//alert ('TEST: tecla: '+simbol+' last char: '+lastchar);
 		
+
 		//se digito anterior for numerico
 		if ( isdigit(lastchar) ) {
-			//alert ('TEST: é numerico!');
+			
 			//se o operador for ponto
 			if (simbol==".") {
-				//alert ('TEST: simbol=.');
+				
 //				//testar que nao existe outro ponto nos caracteres anteriores até aparecer um operador 
 				//se o texto do display so tem um caracter
 				if (displaytxt.length<2) {
@@ -193,7 +180,7 @@ function btnoperator(simbol){
 				else {
 					for (i=displaytxt.length-2;i>=0;i--) {
 						var prevchar=displaytxt.substr(i,1); //substr(number, lenght)
-						//alert ('TEST: simbol=. , inside for , prevchar='+prevchar);
+						
 						// se caracter nao for digito numerico
 						if ( ! isdigit(prevchar) ) {
 							//se encontrar um ponto estamos perante erro
@@ -209,7 +196,7 @@ function btnoperator(simbol){
 						}
 						// se caracter for digito numerico e chegarmos ao inicio da string
 						else if (i<=0) {
-							//alert ('TEST: IS nuneric digit e i=0!');
+						
 							displaytxt=displaytxt+simbol;
 							break;
 						}
@@ -223,7 +210,7 @@ function btnoperator(simbol){
 		}
 		//se digito anterior for factorial
 		else if ( lastchar=="!") {
-				displaytxt=""+displaytxt+simbol;
+			displaytxt=""+displaytxt+simbol;
 		}
 		//se digito anterior for de uma funcao
 		else if ( isfn(lastchar) ) {
@@ -237,14 +224,14 @@ function btnoperator(simbol){
 				alert ('Erro: com o operador'+simbol+' a expressão fica inválida');
 			}
 		}
-		
+
 		//se digito anterior for um fechar parentices
-		
+
 		else if (lastchar==")") {
-			//alert("TEST: lastchar = )")
+			
 			displaytxt=displaytxt+simbol;
 		}
-		
+
 		//se digito anterior for um operador
 		else if ( isoperator(lastchar) ) {
 			if (simbol==".") {
@@ -262,14 +249,14 @@ function btnoperator(simbol){
 				}
 			}
 		}
-		
+
 		//se digito anterior for o ponto
 		else if (lastchar==".") {
 			//se for operador . testar que caracter anterior não é .
 			alert ('Erro: Após o ponto tem que escrever dígitos numéricos em vez do operador: '+simbol);
 		}
-		
-		
+
+
 		//se digito anterior for um abrir parentices
 		else if (lastchar=="(") {
 			if (simbol=="-") {
@@ -279,7 +266,7 @@ function btnoperator(simbol){
 				alert ('Erro: não pode escrever o operador '+simbol+' a seguir à abertura de parentices!');
 			}
 		}
-		
+
 		else {
 			alert ('Erro: não pode escrever dois operadores consecutivos: '+lastchar+simbol);
 		}
@@ -337,9 +324,9 @@ function isfn(char){
 		return false;
 	}
 	else if (char=="a" || char=="b" || char=="c" || char=="d" || char=="e" || char=="f" || char=="g" || char=="h" ||
-			 char=="i" || char=="j" || char=="k" || char=="l" || char=="m" || char=="n" || char=="o" || char=="p" || 
-			 char=="q" || char=="r" || char=="s" || char=="t" || char=="u" || char=="v" || char=="w" || char=="x" || 
-			 char=="y" || char=="z" || char=="^") {
+			char=="i" || char=="j" || char=="k" || char=="l" || char=="m" || char=="n" || char=="o" || char=="p" || 
+			char=="q" || char=="r" || char=="s" || char=="t" || char=="u" || char=="v" || char=="w" || char=="x" || 
+			char=="y" || char=="z" || char=="^") {
 		//alert("TEST: Char is numeric and i will return true !");
 		return true;
 	} 
@@ -403,7 +390,7 @@ function btnclear() {
 			displaytxt=displaytxt.substr(0, displaytxt.length-1);
 		}
 	}
-	
+
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 
@@ -421,7 +408,7 @@ function btnfactorial() {
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
 	var firstdigit = document.getElementById("scientificform:firstdigit").value;
 	var pi = "3.141592653589793238";
-	
+
 	if ( firstdigit == "true" ){
 		//alert ('tecla ! - 0.0 Primeiro caracter!');
 		displaytxt="";
@@ -454,7 +441,7 @@ function btnxrooty() {
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
 	var firstdigit = document.getElementById("scientificform:firstdigit").value;
 	var pi = "3.141592653589793238";
-	
+
 	if ( firstdigit == "true" ){
 		//alert ('tecla pi - 0.0 Primeiro caracter!');
 		displaytxt="";
@@ -487,7 +474,7 @@ function btnpi() {
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
 	var firstdigit = document.getElementById("scientificform:firstdigit").value;
 	var pi = "3.141592653589793238";
-	
+
 	if ( firstdigit == "true" ){
 		//alert ('tecla pi - 0.0 Primeiro caracter!');
 		displaytxt=""+pi;
@@ -506,12 +493,12 @@ function btnpi() {
 			alert ('Erro: tem que colocar um operador ou abrir parentices antes de PI.');
 		}
 	}
-	
+
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
 
 document.onkeydown = function (e) {
-    return false;
+	return false;
 }	
 
 $(document).ready(function(){

@@ -43,12 +43,13 @@ public class Estatistica implements Serializable{
 		this.cont.put("sqrt",0);
 		this.cont.put("tan",0);
 		this.cont.put("tanh",0);
+		this.cont.put("!",0);
 		this.mapa=new TreeMap<String, Integer>();
 		this.resultado=new ArrayList<String>();
 	}
 
+	//getter e setter do resultado 
 	public ArrayList<String> getResultado(){
-			
 			String aux="";
 			this.resultado.add(aux);
 		if (this.mapa.size()>0){
@@ -59,7 +60,6 @@ public class Estatistica implements Serializable{
 			}
 		}
 		return this.resultado; 
-		
 	}
 	
 	public void setResultado(String exp){
@@ -68,6 +68,7 @@ public class Estatistica implements Serializable{
 		
 	}
 	
+	//decomposição da expressão caracter a caracter para contagem dos operadores
 	private void decompoe(String exp){
 		int j=exp.length();
 		if (exp.startsWith("-")){
@@ -91,7 +92,12 @@ public class Estatistica implements Serializable{
 				adiciona("/");
 				exp=exp.substring(1,j);
 				j=j-1;
-			}else if (exp.startsWith("abs")){
+			}else if (exp.startsWith("!")){
+				adiciona("!");
+				exp=exp.substring(1,j);
+				j=j-1;
+			}else
+				if (exp.startsWith("abs")){
 				adiciona("abs");
 				exp=exp.substring(3,j);
 				j=j-3;
@@ -170,12 +176,14 @@ public class Estatistica implements Serializable{
 		}
 	}
 	
+	//actualiza o contador do operador
 	private void adiciona(String operador){
 		int contador=this.cont.get(operador);
 		contador++;
 		this.cont.put(operador, contador);
 	}
 
+	//Ordenação das quantidades dos operadores
 	private TreeMap<String, Integer> mapaOrdenado(){
 		TreeMap<String, Integer> sortedMap = SortByValue(cont);  
 		return sortedMap;

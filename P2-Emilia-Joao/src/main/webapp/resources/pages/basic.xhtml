@@ -9,7 +9,7 @@
 <h:head>
 	<title>Calculadora Basica</title>
 	<link rel="stylesheet" type="text/css" href="../css/calculator.css" />
-	
+
 
 	<script src="../js/basic.js" />
 </h:head>
@@ -35,22 +35,24 @@
 			<div class="ui-grid-col-1"></div>
 
 			<div class="ui-grid-col-4">
-				<p:panelGrid columns="1">
+				<p:panelGrid columns="1"  cellpadding="6" cellspacing="6" >
 					<f:facet name="header"> Calculadora Normal </f:facet>
 					<h:form id="basicform">
-
-						<h:panelGrid styleClass="radiobuttons" columns="2" cellpadding="0"
-							cellspacing="2">
+						
+							<h:panelGrid styleClass="radiobuttons" columns="6"
+								cellpadding="6" cellspacing="6">
+								<div class="tipoCalc">
 								<em> <a href="./scientific.xhtml">Cientifica</a>
 								</em>
-						</h:panelGrid>
+								</div>
+							</h:panelGrid>
 						
 						<h:panelGroup style="display:block; text-align:centre">
 							<h:inputHidden id="firstdigit" value="#{basica.firstdigit}" />
 							<h:inputTextarea id="basicdisplay"
 								styleClass="txtareabasicdisplay"
 								title="Preencha aqui a sua expressao matemática"
-								value="#{basica.display}" rows="2" cols="49"  />
+								value="#{basica.display}" rows="2" cols="49" />
 						</h:panelGroup>
 
 

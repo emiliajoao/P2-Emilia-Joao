@@ -1,3 +1,4 @@
+
 function btnparentices(fname){
 	var displaytxt = document.getElementById("scientificform:scientificdisplay").value;
 	var firstdigit = document.getElementById("scientificform:firstdigit").value;
@@ -23,6 +24,7 @@ function btnparentices(fname){
 			alert ('Erro: tem que abrir parêntesis primeiro!');
 		}
 	}
+	
 	else {
 		var lastchar=displaytxt.substr(displaytxt.length-1, 1); 	
 		if (isoperator(lastchar) || isfn(lastchar) || lastchar=="(") {
@@ -57,9 +59,11 @@ function btnparentices(fname){
 			else if (fname=="("){
 				alert ('Erro: primeiro tem que digitar um operador ou função antes de abrir parêntesis!');
 			}
-
 		}
-
+		else if(lastchar=="!"){
+			displaytxt+=")";
+		}
+		
 	}
 	document.getElementById("scientificform:scientificdisplay").value=displaytxt;
 }
